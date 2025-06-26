@@ -1,5 +1,4 @@
 <div>
-  <h1>Tic Tac Toe</h1>
   <div class="game-board">
     <div
       class="cell"
@@ -11,6 +10,6 @@
       {{ cell }}
     </div>
     <button (click)="resetGame()">Reset Game</button>
-    <p *ngIf="winner()">Winner: {{ winner() === 'E' ? 'Draw' : winner() }}</p>
+    <p *ngIf="winner()">Winner: {{ winner() === 'D' ? 'Draw' : winner() }}</p>
   </div>
 </div>

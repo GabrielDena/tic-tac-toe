@@ -122,10 +122,21 @@ If you have Docker installed, you can use the provided `docker-compose.yml` file
 2. **Install dependencies:**
 
    ```bash
-   npm ci
+   npm install
    ```
 
-3. **Start the development server:**
+3. **Configure the API endpoint:**
+   - Update `src/environments/environment.ts` if your backend API is running on a different URL
+   - Default configuration:
+
+     ```typescript
+     export const environment = {
+       production: false,
+       apiUrl: 'http://localhost:5202/api',
+     };
+     ```
+
+4. **Start the development server:**
 
    ```bash
    npm start
@@ -161,37 +172,51 @@ If you have Docker installed, you can use the provided `docker-compose.yml` file
 
 - `dotnet run` - Start the development server
 - `dotnet build` - Build the project
-- `dotnet test` - Run tests
 
 ### Frontend Scripts
 
 - `npm start` - Start development server
 - `npm run build` - Build for production
 - `npm run watch` - Build in watch mode
-- `npm test` - Run unit tests
 
 ## Project Structure
 
 ```text
+├── README.md                    # Main project documentation
+├── docker-compose.yml           # PostgreSQL database container setup
 ├── backend/
+│   ├── README.md               # Backend-specific documentation
 │   └── TicTacToe.Backend/
-│       ├── Controllers/         # API controllers
-│       ├── Data/               # Database context and migrations
-│       ├── Entities/           # Data models
-│       ├── Repositories/       # Data access layer
-│       ├── Services/           # Business logic
-│       └── Properties/         # Launch settings
-├── frontend/
-│   └── src/
-│       ├── app/
-│       │   ├── components/     # Angular components
-│       │   └── services/       # Angular services
-│       └── assets/             # Static assets
+│       ├── Controllers/        # API controllers
+│       ├── Data/              # Database context and SQL scripts
+│       ├── Entities/          # Data models
+│       ├── Repositories/      # Data access layer
+│       ├── Services/          # Business logic
+│       ├── Properties/        # Launch settings and configurations
+│       ├── Program.cs         # Application entry point
+│       ├── appsettings.json   # Application configuration
+│       └── *.csproj           # Project file
+└── frontend/
+    ├── README.md              # Frontend-specific documentation
+    ├── package.json           # Node.js dependencies and scripts
+    ├── angular.json           # Angular CLI configuration
+    ├── tsconfig.json          # TypeScript configuration
+    └── src/
+        ├── index.html         # Main HTML file
+        ├── main.ts            # Application bootstrap
+        ├── styles.sass        # Global styles
+        ├── app/
+        │   ├── app.ts         # Root component
+        │   ├── components/    # Angular components
+        │   ├── interfaces/    # Angular interfaces
+        │   └── services/      # Angular services
+        └── environments/
+            └── environment.ts  # Environment configuration
 ```
 
 ## API Endpoints
 
-- `GET /api/results` - Get game results
+- `GET /api/results/last` - Get last 10 game results
 - `POST /api/results` - Save game result
 
 Visit `http://localhost:5202/swagger` for complete API documentation.

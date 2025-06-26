@@ -27,10 +27,9 @@ public partial class TicTacToeContext : DbContext
             entity.ToTable("results");
 
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.Datetime)
-                .HasColumnType("timestamp without time zone")
+                .HasColumnType("timestamp with time zone")
                 .HasColumnName("datetime");
             entity.Property(e => e.Winner)
                 .HasMaxLength(1)

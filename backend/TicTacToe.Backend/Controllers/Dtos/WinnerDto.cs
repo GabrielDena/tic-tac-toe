@@ -4,6 +4,7 @@ namespace TicTacToe.Backend.Controllers.Dtos;
 
 public class WinnerDto
 {
-    [RegularExpression("X|O", ErrorMessage = "Winner must be either 'X' or 'O'.")]
+    [Required]
+    [RegularExpression("X|O|D", ErrorMessage = "Winner must be either 'X', 'O' or 'D'.")]
     public string Winner { get; set; }
 }
