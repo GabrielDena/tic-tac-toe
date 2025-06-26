@@ -122,7 +122,7 @@ If you have Docker installed, you can use the provided `docker-compose.yml` file
 2. **Install dependencies:**
 
    ```bash
-   npm install
+   npm ci
    ```
 
 3. **Configure the API endpoint:**
