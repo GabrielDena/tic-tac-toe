@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-db
+    restart: always
+    tty: true
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - postgres_dump:/dump
+    environment:
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_DB: 'tic_tac_toe'
+
+volumes:
+  postgres_data:
+    driver: local
+  postgres_dump:
+    driver: local
+
